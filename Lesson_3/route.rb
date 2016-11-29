@@ -1,5 +1,4 @@
-class Route
-
+class Route  
   attr_accessor :first_station, :station, :last_station
 
   def initialize(first_station, last_station)
@@ -36,5 +35,4 @@ class Route
   def show_list_stations
     puts "Полный список станций #{@route}"
   end
-
 end
