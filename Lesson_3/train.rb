@@ -2,7 +2,8 @@ class Train
 
   TYPES = { cargo: 'Грузовой', passenger: 'Пассажирский' }
 
-  attr_accessor :number, :type, :wagons, :speed, :set_route, :curent_station, :next_station, :prev_station
+  attr_accessor :speed
+  attr_reader :number, :type, :wagons, :curent_station, :next_station, :prev_station
 
   def initialize(number, type, wagons, speed = 0)
     @number = number
@@ -17,11 +18,6 @@ class Train
 
   def show_speed
     puts "Текущая скорость поезда №#{number} - #{@speed}"
-  end
-
-  def change_speed(speed)
-    @speed = speed
-    puts "Скорость поезда №#{number} увеличина до #{@speed}"
   end
 
   def down_speed
@@ -53,11 +49,10 @@ class Train
     end
   end
 
-  def set_route(route)
+  def route(route)
     @route = route.list_stations
     @curent_station = @route.first
   end
-
 
   def next_station
     if @curent_station == @route.last
@@ -73,7 +68,12 @@ class Train
   end
 
   def move_next_station
-    @curent_station = @route.fetch(@next_index)
+    if @curent_station = @route.fetch(@next_index)
+      "Следующая станция #{@curent_station}"
+    else 
+      @next_index = @route.index(@curent_station).next
+      "Следующая станция #{@route.fetch(@next_index)}"
+    end
   end
 
   def prev_station
