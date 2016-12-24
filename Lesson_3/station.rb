@@ -18,7 +18,6 @@ class Station
   end
 
   def type_trains(type_trains)
-    @type_trains = type_trains
     cargo_trains = @list_trains.select { |train| train.type == :cargo }.size
     passenger_trains = @list_trains.select { |train| train.type == :passenger }.size
     puts "На станции #{@name} находится: #{passenger_trains} - пассажирских поезда и #{cargo_trains} - грузовых "
