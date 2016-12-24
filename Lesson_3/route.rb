@@ -20,7 +20,8 @@ class Route
       puts "Станция #{station} является начальной, ее удаление невозможно"
     elsif station == @last_station
       puts "Станция #{station} является конечной, ее удаление невозможно"
-    else @route.delete(station)
+    else 
+      @route.delete(station)
       puts "Станция #{station} удалена из списка"
     end
   end
