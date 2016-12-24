@@ -32,7 +32,7 @@ class Train
   def add_wagon
     if @speed == 0
       @wagons +=1
-      puts "К поезду №#{number} добавлени 1 вагон"
+      puts "К поезду №#{number} добавлен 1 вагон"
     else
       puts "Вагоны добавить невозможно. Требуется остановка поезда"
     end
@@ -49,7 +49,7 @@ class Train
     end
   end
 
-  def route(route)
+  def route=(route)
     @route = route.list_stations
     @curent_station = @route.first
   end
@@ -68,10 +68,10 @@ class Train
   end
 
   def move_next_station
-    if @curent_station = @route.fetch(@next_index)
-      "Следующая станция #{@curent_station}"
+    if @curent_station = @route.fetch(@curent_index)
+      "Поезд прибыл на станцию #{@curent_station}"
     else 
-      @next_index = @route.index(@curent_station).next
+      @next_index = @route.index(@curent_station)
       "Следующая станция #{@route.fetch(@next_index)}"
     end
   end
